@@ -10,7 +10,7 @@ describe 'Visitor' do
       fill_in 'user[password]', with: 'password'
       click_on 'Create Account'
 
-      expect(current_path).to eq user_path
+      expect(current_path).to eq user_path(User.last)
       expect(page).to have_content(User.last.name)
     end
   end
