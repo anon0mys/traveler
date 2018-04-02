@@ -1,1 +1,5 @@
-<h2>Welcome <%= @user.name %></h2>
+<% if current_user %>
+  <h2>Welcome, <%= @user.name %></h2>
+<% else %>
+  <h2>The adventures of <%= @user.name %></h2>
+<% end %>

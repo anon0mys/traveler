@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-
+    session[:user_id] = nil
   end
 
   def create
@@ -11,5 +11,10 @@ class SessionsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    session.clear
+    redirect_to root_path
   end
 end
