@@ -17,17 +17,17 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, location: [:city, :country])
+    params.require(:post).permit(:title, :body, location: [:state, :country])
   end
 
   def build_params
     all_params = post_params
     loc_data = all_params[:location]
     all_params[:location] =
-      if Location.find_by_country_and_city(loc_data[:country], loc_data[:city]).nil?
+      if Location.find_by_country_and_state(loc_data[:country], loc_data[:state]).nil?
         Location.create(loc_data)
       else
-        Location.find_by_country_and_city(loc_data[:country], loc_data[:city])
+        Location.find_by_country_and_state(loc_data[:country], loc_data[:state])
       end
     all_params
   end

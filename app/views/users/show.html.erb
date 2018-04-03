@@ -9,7 +9,7 @@
     <% @posts.each do |post| %>
         <li>
           <h3><%= post.title %></h3>
-          <p> <%= post.location.city %>, <%= post.location.country %> </p>
+          <p> <%= post.location.state %>, <%= post.location.country %> </p>
           <p><%= post.body %></p>
         </li>
     <% end %>

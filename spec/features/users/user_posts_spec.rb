@@ -13,7 +13,7 @@ describe 'User' do
     expect(current_path).to eq(new_user_post_path(user))
 
     fill_in 'post[title]', with: 'Adventure 1'
-    fill_in 'post[location][city]', with: 'Colorado'
+    fill_in 'post[location][state]', with: 'Colorado'
     select 'USA', from: 'post[location][country]'
     fill_in 'post[body]', with: 'A description of the adventure.'
 
