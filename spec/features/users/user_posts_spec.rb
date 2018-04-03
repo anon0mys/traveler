@@ -3,6 +3,9 @@ require 'rails_helper'
 describe 'User' do
   scenario 'can create a post' do
     user = User.create(name: 'User', email: 'user@mail.com', password: 'test')
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit user_path(user)
 
     click_on 'Add an Adventure'
@@ -17,5 +20,6 @@ describe 'User' do
     click_on 'Create Adventure'
 
     expect(current_path).to eq(user_path(user))
+    expect(page).to have_content(Post.last.title)
   end
 end
