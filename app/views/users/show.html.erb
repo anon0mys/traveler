@@ -3,3 +3,15 @@
 <% else %>
   <h2>The adventures of <%= @user.name %></h2>
 <% end %>
+
+<% unless @posts.nil? %>
+  <ul>
+    <% @posts.each do |post| %>
+        <li>
+          <h3><%= post.title %></h3>
+          <p> <%= post.location.state %>, <%= post.location.country %> </p>
+          <p><%= post.body %></p>
+        </li>
+    <% end %>
+  </ul>
+<% end %>
