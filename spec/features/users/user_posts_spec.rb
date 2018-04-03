@@ -22,4 +22,32 @@ describe 'User' do
     expect(current_path).to eq(user_path(user))
     expect(page).to have_content(Post.last.title)
   end
+
+  context 'on their show page' do
+    scenario 'can see their own posts on their show page' do
+
+    end
+
+    scenario 'can edit their own posts' do
+
+    end
+
+    scenario 'can delete their own posts' do
+
+    end
+  end
+
+  context 'on another user\'s show page' do
+    scenario 'can see someone else\'s posts' do
+
+    end
+
+    scenario 'can\'t edit someone else\'s posts' do
+
+    end
+
+    scenario 'can\'t delete someone else\'s posts' do
+
+    end
+  end
 end
