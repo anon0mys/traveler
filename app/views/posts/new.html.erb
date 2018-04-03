@@ -1,0 +1,14 @@
+<%= form_for [@user, @post], html: { multipart: true } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.fields_for @location do |l| %>
+    <%= l.label :city %>
+    <%= l.text_field :city %>
+    <%= l.label :country %>
+    <%= l.select :country, ['USA']  %>
+  <% end %>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Adventure' %>
+<% end %>

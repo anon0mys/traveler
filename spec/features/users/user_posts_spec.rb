@@ -10,11 +10,11 @@ describe 'User' do
 
     click_on 'Add an Adventure'
 
-    expect(current_path).to eq(new_user_post_path)
+    expect(current_path).to eq(new_user_post_path(user))
 
     fill_in 'post[title]', with: 'Adventure 1'
-    fill_in 'post[state]', with: 'Colorado'
-    select 'USA', from: 'post[country]'
+    fill_in 'post[location][city]', with: 'Colorado'
+    select 'USA', from: 'post[location][country]'
     fill_in 'post[body]', with: 'A description of the adventure.'
 
     click_on 'Create Adventure'
