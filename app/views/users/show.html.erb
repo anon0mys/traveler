@@ -13,6 +13,7 @@
           <p><%= post.body %></p>
           <div class="buttons">
             <%= link_to 'Edit', edit_user_post_path(@user) %>
+            <%= button_to 'Delete', user_post_path(@user, post), method: 'delete' %>
           </div>
         </li>
     <% end %>

@@ -49,6 +49,7 @@ describe 'User' do
       visit user_path(@user)
 
       within '.card:first-child' do
+        expect(page).to have_content('Post 1')
         click_on 'Edit'
       end
 
@@ -64,7 +65,16 @@ describe 'User' do
     end
 
     scenario 'can delete their own posts' do
+      visit user_path(@user)
 
+      expect(page).to have_content('Post 1')
+
+      within '.card:first-child' do
+        click_on 'Delete'
+      end
+
+      expect(current_path).to eq(user_path(@user))
+      expect(page).to_not have_content('Page 1')
     end
   end
 
