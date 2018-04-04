@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User' do
   scenario 'can create a post' do
-    user = User.create(name: 'User', email: 'user@mail.com', password: 'test')
+    user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -24,12 +24,34 @@ describe 'User' do
   end
 
   context 'on their show page' do
-    scenario 'can see their own posts on their show page' do
+    before(:each) do
+      @user = create(:user)
+      5.times { @user.posts.create(attributes_for(:post))}
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    end
 
+    scenario 'can see their own posts on their show page' do
+      visit user_path(@user)
+
+      expect(page).to have_content('Post')
     end
 
     scenario 'can edit their own posts' do
+      visit user_path(@user)
 
+      within '.card:first-child' do
+        click_on 'Edit'
+      end
+
+      expect(current_path).to eq(edit_user_post_path(@user))
+      expect(page).to have_content('Edit Post')
+
+      fill_in 'post[title]', with: 'A new title'
+
+      click_on 'Update Post'
+
+      expect(current_path).to eq(user_path(@user))
+      expect(page).to have_content('A new title')
     end
 
     scenario 'can delete their own posts' do
