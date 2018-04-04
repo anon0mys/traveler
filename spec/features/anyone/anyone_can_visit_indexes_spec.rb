@@ -19,10 +19,10 @@ describe 'Anyone' do
     scenario 'should see all posts' do
       visit posts_path
 
-      expect(page).to have_content(@posts.first.title)
-      expect(page).to have_content(@posts.last.title)
-      expect(page).to have_content(@posts[2].location)
-      expect(page).to have_content(@posts.last.location)
+      expect(page).to have_content(@user_one_posts.first.title)
+      expect(page).to have_content(@user_two_posts.last.title)
+      expect(page).to have_content(@user_one_posts[2].location.country)
+      expect(page).to have_content(@user_two_posts.last.location.state)
     end
 
     scenario 'should be able to click on post title to go to show page' do
