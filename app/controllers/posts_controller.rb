@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
     @user = current_user
     @post = @user.posts.new
@@ -11,6 +16,31 @@ class PostsController < ApplicationController
       redirect_to user_path(current_user)
     else
       render :new
+    end
+  end
+
+  def edit
+    @user = current_user
+    @post = Post.find(params[:id])
+    render file: '/public/404' unless @post.user.id == @user.id
+    @location = @post.location
+  end
+
+  def update
+    post = current_user.posts.find(params[:id])
+    if post.update(build_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    post = current_user.posts.find(params[:id])
+    if post.destroy
+      redirect_to user_path(current_user)
+    else
+      redirect_to user_path(current_user)
     end
   end
 
