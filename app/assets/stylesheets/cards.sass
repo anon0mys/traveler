@@ -16,14 +16,42 @@
     position: relative
     text-align: center
 
-  .card-image-container
-    position: absolute
-    max-height: 150px
-    overflow: hidden
-    z-index: -1
-
-    img
-      width: 100%
-
   .card:hover
     transform: scale(1.05)
+
+    .card-image-container
+      height: 100%
+
+    .card-bottom
+      position: absolute
+      z-index: -1
+
+  .card-image-container
+    position: relative
+    height: 150px
+    overflow: hidden
+    z-index: 2
+
+    .card-image
+      position: absolute
+      top: -50px
+      bottom: -50px
+      left: -50px
+      right: -50px
+      margin: auto
+      overflow: hidden
+      z-index: -1
+
+      img
+        height: 100%
+
+
+    .post-title
+      font-size: 3em
+      margin-top: 20px
+
+      a
+        color: white
+        font-family: 'Cinzel', serif
+        font-weight: bold
+        text-decoration: none
