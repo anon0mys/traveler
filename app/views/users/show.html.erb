@@ -8,7 +8,7 @@
   <ul class='cards-container'>
     <% @posts.each do |post| %>
         <li class='card'>
-          <h3><%= post.title %></h3>
+          <%= link_to post.title, post_path(post), class: 'post-title' %>
           <p> <%= post.location.state %>, <%= post.location.country %> </p>
           <p><%= post.body %></p>
           <% if @user_home %>

@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
     @user = current_user
     @post = @user.posts.new
