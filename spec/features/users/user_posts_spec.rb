@@ -26,14 +26,17 @@ describe 'User' do
   context 'on their show page' do
     before(:each) do
       @user = create(:user)
-      5.times { @user.posts.create(attributes_for(:post))}
+      @location = create(:location)
+      posts = create_list(:post, 5, user: @user, location: @location)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
 
     scenario 'can see their own posts on their show page' do
       visit user_path(@user)
 
-      expect(page).to have_content('Post')
+      expect(page).to have_content('Post 1')
+      expect(page).to have_content('Post 3')
+      expect(page).to have_content('Post 5')
     end
 
     scenario 'can edit their own posts' do

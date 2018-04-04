@@ -5,12 +5,15 @@
 <% end %>
 
 <% unless @posts.nil? %>
-  <ul>
+  <ul class='cards-container'>
     <% @posts.each do |post| %>
-        <li>
+        <li class='card'>
           <h3><%= post.title %></h3>
           <p> <%= post.location.state %>, <%= post.location.country %> </p>
           <p><%= post.body %></p>
+          <div class="buttons">
+            <%= button_to 'Edit', edit_user_post_path(@user) %>
+          </div>
         </li>
     <% end %>
   </ul>
