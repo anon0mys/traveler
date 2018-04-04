@@ -18,7 +18,7 @@ describe 'User' do
     end
 
     scenario 'can\'t edit someone else\'s posts' do
-      visit edit_user_post_path(@user_two, @user_two_posts.first)
+      visit edit_user_post_path(@user_two, @user_two.posts.first)
 
       expect(page).to_not have_content('Edit Post')
       expect(page).to have_content('The page you were looking for doesn\'t exist')

@@ -21,7 +21,8 @@ class PostsController < ApplicationController
 
   def edit
     @user = current_user
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
+    render file: '/public/404' unless @post.user.id == @user.id
     @location = @post.location
   end
 
