@@ -1,16 +1,22 @@
-<% if current_user %>
+<% if @user_home %>
   <h2>Welcome, <%= @user.name %></h2>
 <% else %>
   <h2>The adventures of <%= @user.name %></h2>
 <% end %>
 
 <% unless @posts.nil? %>
-  <ul>
+  <ul class='cards-container'>
     <% @posts.each do |post| %>
-        <li>
-          <h3><%= post.title %></h3>
+        <li class='card'>
+          <%= link_to post.title, post_path(post), class: 'post-title' %>
           <p> <%= post.location.state %>, <%= post.location.country %> </p>
           <p><%= post.body %></p>
+          <% if @user_home %>
+            <div class="buttons">
+              <%= link_to 'Edit', edit_user_post_path(@user) %>
+              <%= button_to 'Delete', user_post_path(@user, post), method: 'delete' %>
+            </div>
+          <% end %>
         </li>
     <% end %>
   </ul>
