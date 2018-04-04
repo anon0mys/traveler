@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :location do
     state 'Colorado'
-    country 'USA'
+    sequence(:country, 1) { |n| "Country #{n}" }
   end
 
   factory :post do

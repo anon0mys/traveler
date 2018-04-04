@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Visitor' do
+describe 'Anyone' do
   scenario 'can navigate to the home page' do
     visit '/'
 
