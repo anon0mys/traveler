@@ -1,0 +1,14 @@
+<h2>All Posts</h2>
+
+<% unless @posts.nil? %>
+  <ul class='cards-container'>
+    <% @posts.each do |post| %>
+        <li class='card'>
+          <%= link_to post.title, post_path(post), class: 'post-title' %>
+          <%= link_to post.user.name, user_path(post.user), class: 'user-title' %>
+          <p> <%= post.location.state %>, <%= post.location.country %> </p>
+          <p><%= post.body %></p>
+        </li>
+    <% end %>
+  </ul>
+<% end %>
