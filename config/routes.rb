@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index, :show]
 
+  namespace :admin do
+    resources :users, except: [:show]
+  end
+  
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
