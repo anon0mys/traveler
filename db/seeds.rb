@@ -4,9 +4,9 @@ user_two = User.create(name: 'User 2', email: 'user2@mail.com', password: 'passw
 User.create(name: 'Admin', email: 'admin@mail.com', password: 'password', role: 1)
 
 location_one = Location.create(country: 'USA', state: 'Colorado')
-location_two = Location.create(country: 'USA', state: 'California')
-location_three = Location.create(country: 'USA', state: 'Michigan')
-location_four = Location.create(country: 'USA', state: 'Washington')
+location_two = Location.create(country: 'Italy', state: 'Florence')
+location_three = Location.create(country: 'France', state: 'Paris')
+location_four = Location.create(country: 'UK', state: 'Scotland')
 
 # User one posts
 (1..6).each do |num|

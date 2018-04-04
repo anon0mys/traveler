@@ -4,7 +4,12 @@
   <ul class='cards-container'>
     <% @posts.each do |post| %>
         <li class='card'>
-          <%= link_to post.title, post_path(post), class: 'post-title' %>
+          <div class="card-image-container">
+            <div class="card-image">
+              <%= image_tag asset_path 'old.jpeg' %>
+            </div>
+            <%= link_to post.title, post_path(post), class: 'post-title' %>
+          </div>
           <%= link_to post.user.name, user_path(post.user), class: 'user-title' %>
           <p> <%= post.location.state %>, <%= post.location.country %> </p>
           <p><%= post.body %></p>

@@ -1,0 +1,29 @@
+.cards-container
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-around
+  margin-right: 10px
+
+  .card
+    flex: 1
+    min-width: 300px
+    max-width: 300px
+    min-height: 300px
+    max-height: 300px
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5)
+    margin: 0.375em
+    margin-bottom: .75em
+    position: relative
+    text-align: center
+
+  .card-image-container
+    position: absolute
+    max-height: 150px
+    overflow: hidden
+    z-index: -1
+
+    img
+      width: 100%
+
+  .card:hover
+    transform: scale(1.05)
