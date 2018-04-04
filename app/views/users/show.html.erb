@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if @user_home %>
   <h2>Welcome, <%= @user.name %></h2>
 <% else %>
   <h2>The adventures of <%= @user.name %></h2>
@@ -11,10 +11,12 @@
           <h3><%= post.title %></h3>
           <p> <%= post.location.state %>, <%= post.location.country %> </p>
           <p><%= post.body %></p>
-          <div class="buttons">
-            <%= link_to 'Edit', edit_user_post_path(@user) %>
-            <%= button_to 'Delete', user_post_path(@user, post), method: 'delete' %>
-          </div>
+          <% if @user_home %>
+            <div class="buttons">
+              <%= link_to 'Edit', edit_user_post_path(@user) %>
+              <%= button_to 'Delete', user_post_path(@user, post), method: 'delete' %>
+            </div>
+          <% end %>
         </li>
     <% end %>
   </ul>
