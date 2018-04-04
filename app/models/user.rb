@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :locations, through: :posts
   has_secure_password
 
+  enum role: %i[default admin]
+  
   def top_three_locations
     locations.group(:country)
              .order('count_country DESC')
