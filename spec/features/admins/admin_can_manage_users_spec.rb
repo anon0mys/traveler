@@ -36,7 +36,7 @@ describe 'Admin' do
       click_on 'Edit User'
     end
 
-    expect(current_path).to eq(edit_admin_user_path)
+    expect(current_path).to eq(edit_admin_user_path(@users.first))
 
     fill_in 'user[name]', with: 'Test Name'
     click_on 'Update User'

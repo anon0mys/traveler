@@ -5,4 +5,6 @@ class User < ApplicationRecord
   has_many :comments
   has_many :locations, through: :posts
   has_secure_password
+
+  enum role: %i[default admin]
 end
