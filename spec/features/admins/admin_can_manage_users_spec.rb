@@ -23,6 +23,56 @@ describe 'Admin' do
     expect(page).to have_content(@users.last.email)
   end
 
+  scenario 'can create a new default user' do
+    admin = create(:user, role: 1)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit admin_users_path
+
+    expect(page).to_not have_content('User 6')
+
+    click_on 'Create a New User'
+
+    expect(current_path).to eq(new_admin_user_path)
+
+    fill_in 'user[name]', with: 'User 6'
+    fill_in 'user[email]', with: 'test@mail.com'
+    fill_in 'user[password]', with: 'password'
+    select 'default', from: 'user[role]'
+
+    click_on 'Create User'
+
+    expect(current_path).to eq(admin_users_path)
+    expect(page).to have_content('User 6')
+    expect(User.last.default?).to be_truthy
+  end
+
+  scenario 'can create a new admin user' do
+    admin = create(:user, role: 1)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit admin_users_path
+
+    expect(page).to_not have_content('Admin 2')
+
+    click_on 'Create a New User'
+
+    expect(current_path).to eq(new_admin_user_path)
+
+    fill_in 'user[name]', with: 'Admin 2'
+    fill_in 'user[email]', with: 'test@mail.com'
+    fill_in 'user[password]', with: 'password'
+    select 'admin', from: 'user[role]'
+
+    click_on 'Create User'
+
+    expect(current_path).to eq(admin_users_path)
+    expect(page).to have_content('Admin 2')
+    expect(User.last.admin?).to be_truthy
+  end
+
   scenario 'can edit a user' do
     admin = create(:user, role: 1)
 
