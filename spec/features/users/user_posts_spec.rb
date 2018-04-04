@@ -25,10 +25,16 @@ describe 'User' do
 
   context 'on their show page' do
     before(:each) do
+      DatabaseCleaner.clean
       @user = create(:user)
       @location = create(:location)
-      posts = create_list(:post, 5, user: @user, location: @location)
+      @posts = create_list(:post, 5, user: @user, location: @location)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    end
+
+    after(:each) do
+      DatabaseCleaner.clean
+      FactoryBot.reload
     end
 
     scenario 'can see their own posts on their show page' do
@@ -46,12 +52,12 @@ describe 'User' do
         click_on 'Edit'
       end
 
-      expect(current_path).to eq(edit_user_post_path(@user))
+      expect(current_path).to eq(edit_user_post_path(@user, @posts.first))
       expect(page).to have_content('Edit Post')
 
       fill_in 'post[title]', with: 'A new title'
 
-      click_on 'Update Post'
+      click_on 'Update Adventure'
 
       expect(current_path).to eq(user_path(@user))
       expect(page).to have_content('A new title')

@@ -12,7 +12,7 @@
           <p> <%= post.location.state %>, <%= post.location.country %> </p>
           <p><%= post.body %></p>
           <div class="buttons">
-            <%= button_to 'Edit', edit_user_post_path(@user) %>
+            <%= link_to 'Edit', edit_user_post_path(@user) %>
           </div>
         </li>
     <% end %>

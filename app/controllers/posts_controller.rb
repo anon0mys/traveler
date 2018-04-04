@@ -14,6 +14,21 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    @post = current_user.posts.find(params[:id])
+    @location = @post.location
+  end
+
+  def update
+    post = current_user.posts.find(params[:id])
+    if post.update(build_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def post_params
