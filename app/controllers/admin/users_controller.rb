@@ -18,6 +18,10 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
+  def new
+
+  end
+
   def destroy
     user = User.find(params[:id])
     if user.destroy
