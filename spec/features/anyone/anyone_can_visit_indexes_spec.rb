@@ -26,7 +26,11 @@ describe 'Anyone' do
     end
 
     scenario 'should be able to click on post title to go to show page' do
+      visit posts_path
 
+      click_on @user_one_posts.first.title
+
+      expect(current_path).to eq(post_path(@user_one_posts.first))
     end
   end
 end
