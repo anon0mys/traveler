@@ -45,7 +45,7 @@ describe 'Admin' do
 
     expect(current_path).to eq(admin_users_path)
     expect(page).to have_content('User 6')
-    expect(User.last.role).to eq 0
+    expect(User.last.default?).to be_truthy
   end
 
   scenario 'can create a new admin user' do
@@ -70,7 +70,7 @@ describe 'Admin' do
 
     expect(current_path).to eq(admin_users_path)
     expect(page).to have_content('Admin 2')
-    expect(User.last.role).to eq 1
+    expect(User.last.admin?).to be_truthy
   end
 
   scenario 'can edit a user' do
