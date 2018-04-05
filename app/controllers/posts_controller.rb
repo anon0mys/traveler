@@ -51,13 +51,13 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, location: [:country, :lat, :long])
+    params.require(:post).permit(:title, :body, location: [:country, :lat, :lng])
   end
 
   def build_params
     all_params = post_params
     loc_data = all_params[:location]
-    all_params[:location] = Location.find_by_lat_and_long(loc_data[:lat], loc_data[:long])
+    all_params[:location] = Location.find_by_lat_and_lng(loc_data[:lat], loc_data[:lng])
     unless all_params[:location]
       all_params[:location] = Location.create(loc_data)
     end

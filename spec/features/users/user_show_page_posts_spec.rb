@@ -15,7 +15,7 @@ describe 'User' do
     fill_in 'post[title]', with: 'Adventure 1'
     select 'USA', from: 'post[location][country]'
     fill_in 'post[location][lat]', with: 39.742043
-    fill_in 'post[location][long]', with: -104.991531
+    fill_in 'post[location][lng]', with: -104.991531
     fill_in 'post[body]', with: 'A description of the adventure.'
 
     click_on 'Create Adventure'
