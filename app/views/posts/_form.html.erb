@@ -2,10 +2,12 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.fields_for @location do |l| %>
-    <%= l.label :state %>
-    <%= l.text_field :state %>
     <%= l.label :country %>
     <%= l.select :country, ['USA']  %>
+    <%= l.label :latitude %>
+    <%= l.number_field :lat %>
+    <%= l.label :longitude %>
+    <%= l.number_field :long %>
   <% end %>
   <%= f.label :body %>
   <%= f.text_area :body %>

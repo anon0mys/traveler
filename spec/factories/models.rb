@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :location do
-    state 'Colorado'
     sequence(:country, 1) { |n| "Country #{n}" }
+    lat { rand(-90..90) }
+    long { rand(-180..180) }
   end
 
   factory :post do
