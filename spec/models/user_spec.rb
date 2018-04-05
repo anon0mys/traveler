@@ -20,7 +20,7 @@ RSpec.describe User do
       expect(admin.role).to eq 'default'
     end
   end
-    
+
   describe 'class methods' do
     it 'should find top three locations' do
       @user = create(:user)

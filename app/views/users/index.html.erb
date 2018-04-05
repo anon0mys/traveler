@@ -1,15 +1,28 @@
-<h2>All Users</h2>
+<div class='page-title'>
+  <h2>All Users</h2>
+</div>
 
 <% unless @users.nil? %>
   <ul class='cards-container'>
     <% @users.each do |user| %>
         <li class='card'>
-          <%= link_to user.name, user_path(user) %>
-          <%= "Total Posts: #{user.posts.count}" %>
-          <div class="top-locations">
-            <% user.top_three_locations.each do |country, count| %>
-            <p><%= "#{country}: #{count}" %></p>
+          <div class="card-image-container">
+            <%= link_to user_path(user) do %>
+              <div class="card-image">
+                <%= image_tag asset_path 'profile.jpeg' %>
+              </div>
             <% end %>
+          </div>
+          <div class="card-bottom">
+            <div class="user-info">
+              <h3><%= link_to user.name, user_path(user) %></h3>
+              <p><%= "Total Posts: #{user.posts.count}" %></p>
+              <div class="top-locations">
+                <% user.top_three_locations.each do |country, count| %>
+                  <p><%= "#{country}: #{count}" %></p>
+                <% end %>
+              </div>
+            </div>
           </div>
         </li>
     <% end %>

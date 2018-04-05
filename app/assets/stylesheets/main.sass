@@ -1,63 +1,41 @@
-header
-  height: 250px
+.page-title
+  margin-top: 15px
+  margin-bottom: 15px
+  font-family: 'Cinzel', serif
+  text-align: center
+  border-bottom: 0.25px solid black
+  box-shadow: 0.25px 1px 1px black
 
-  .hero-title
-    text-align: center
+.buttons
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: baseline
 
-    a
-      font-size: 2.25em
-      font-family: 'Raleway', sans-serif
-      color: white
-      text-decoration: none
+  .delete-button
+    padding: 13px
+    padding-top: 1.5px
+    padding-bottom: 1.5px
+    background-color: #ececec
+    border: 1px solid grey
+    font-family: 'Cinzel', serif
+    font-weight: normal
+    text-decoration: none
 
-  .hero-image
-    position: absolute
-    max-height: 250px
-    overflow: hidden
-    z-index: -1
-    box-shadow: 5px 2px 2px black
+  .delete-button:hover
+    background-color: #d60000
+    border: none
+    transform: scale(1.0125)
 
-    img
-      width: 100%
+  .edit-button
+    padding: 17px
+    padding-top: 1.5px
+    padding-bottom: 1.5px
+    border: 1px solid grey
+    margin-right: 20px
+    background-color: #ececec
 
-  .account-nav
-    display: flex
-    flex-direction: row
-    align-items: baseline
-    justify-content: flex-end
-    padding-top: 1%
-    padding-right: 1%
-
-    a
-      margin: 5px
-      color: white
-      text-decoration: none
-
-    p
-      margin-left: .5%
-      margin-right: .5%
-      font-size: .75em
-      color: white
-
-.navbar
-  background-color: lightslategrey
-  box-shadow: 1px 1px 2px lightslategrey
-
-  .navbar-nav
-    margin: 0
-    display: table
-    width: 100%
-
-    li
-      display: table-cell
-      width: 1%
-      float: none
-
-      a
-        text-align: center
-        border-right: solid 0.5px black
-
-    li:last-child
-      a
-        border-right: 0
-        border-radius: 0 3px 3px 0
+  .edit-button:hover
+    background-color: #ffd23f
+    border: none
+    transform: scale(1.0125)
