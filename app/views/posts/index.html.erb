@@ -19,7 +19,7 @@
           <div class="card-bottom">
             <%= link_to user_path(post.user) do %>
               <h3><%= post.user.name %></h3>
-              <p> <%= post.location.state %>, <%= post.location.country %> </p>
+              <p> <%= post.location.country %> </p>
               <p><%= post.body %></p>
             <% end %>
           </div>

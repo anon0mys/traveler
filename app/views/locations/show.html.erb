@@ -1,9 +1,5 @@
-<div class="page-title">
-  <% if @user_home %>
-    <h2>Welcome, <%= @user.name %></h2>
-  <% else %>
-    <h2>The adventures of <%= @user.name %></h2>
-  <% end %>
+<div class='page-title'>
+  <h2>Posts Near: <%= @location.lat %>, <%= @location.lng %></h2>
 </div>
 
 <% unless @posts.nil? %>
@@ -22,14 +18,9 @@
           </div>
           <div class="card-bottom">
             <%= link_to user_path(post.user) do %>
-              <h5> <%= post.location.country %> </h5>
-              <p class="user-show-description"><%= post.body[0..120] %></p>
-              <% if @user_home %>
-                <div class="buttons">
-                  <%= link_to 'Edit', edit_user_post_path(@user), class: 'edit-button' %>
-                  <%= button_to 'Delete', user_post_path(@user, post), method: 'delete', class: 'delete-button' %>
-                </div>
-              <% end %>
+              <h3><%= post.user.name %></h3>
+              <p> <%= post.location.country %> </p>
+              <p><%= post.body %></p>
             <% end %>
           </div>
         </li>

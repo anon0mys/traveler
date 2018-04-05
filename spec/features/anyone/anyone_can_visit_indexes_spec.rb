@@ -22,7 +22,7 @@ describe 'Anyone' do
       expect(page).to have_content(@user_one_posts.first.title)
       expect(page).to have_content(@user_two_posts.last.title)
       expect(page).to have_content(@user_one_posts[2].location.country)
-      expect(page).to have_content(@user_two_posts.last.location.state)
+      expect(page).to have_content(@user_two_posts.last.location.country)
     end
 
     scenario 'should be able to click on post title to go to show page' do

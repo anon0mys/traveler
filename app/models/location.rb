@@ -10,4 +10,8 @@ class Location < ApplicationRecord
       .count(:location_id)
       .to_a
   end
+
+  def self.maps_loc_prep
+    all.to_json(only: [:lat, :lng])
+  end
 end

@@ -1,6 +1,6 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.user.name %></p>
-<p><%= @post.location.state%><%= @post.location.country %></p>
+<p><%= @post.location.country %></p>
 
 <%= link_to 'Edit', edit_user_post_path(@post.user, @post) %>
 <%= button_to 'Delete', user_post_path(@post.user, @post), method: 'delete' %>
