@@ -1,1 +1,24 @@
-<h2>Traveller</h2>
+
+<div id="regions_div"></div>
+
+<%= javascript_tag "chartData = #{@chart_data.to_json.html_safe};" %>
+
+<!-- Google Charts Sripts -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {
+    'packages':['geochart'],
+    'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+  });
+  google.charts.setOnLoadCallback(drawRegionsMap);
+
+  function drawRegionsMap() {
+    var data = google.visualization.arrayToDataTable(chartData);
+
+    var options = {colorAxis: {colors: ['#e1ecf2', '#005e2c']}};
+
+    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+    chart.draw(data, options);
+  }
+</script>
