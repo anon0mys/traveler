@@ -38,11 +38,7 @@ RSpec.describe Location do
 
     it 'should create a lat long collection for maps' do
       result = Location.maps_loc_prep
-      expected = [{'lat' => 39.742043, 'lng' => -104.991531},
-                  {'lat' => 39.742043, 'lng' => -104.991531},
-                  {'lat' => 39.742043, 'lng' => -104.991531},
-                  {'lat' => 39.742043, 'lng' => -104.991531},
-                  {'lat' => 39.742043, 'lng' => -104.991531}]
+      expected = "[{\"lat\":39.742043,\"lng\":-104.991531},{\"lat\":39.742043,\"lng\":-104.991531},{\"lat\":39.742043,\"lng\":-104.991531},{\"lat\":39.742043,\"lng\":-104.991531},{\"lat\":39.742043,\"lng\":-104.991531}]"
 
       expect(result).to eq(expected)
     end

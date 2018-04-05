@@ -1,0 +1,29 @@
+<div class='page-title'>
+  <h2>Posts Near: <%= @location.lat %>, <%= @location.lng %></h2>
+</div>
+
+<% unless @posts.nil? %>
+  <ul class='cards-container'>
+    <% @posts.each do |post| %>
+        <li class='card'>
+          <div class="card-image-container">
+            <%= link_to post_path(post) do %>
+              <div class="card-image">
+                <%= image_tag asset_path 'old.jpeg' %>
+              </div>
+              <div class="post-title">
+                <%= post.title %>
+              </div>
+            <% end %>
+          </div>
+          <div class="card-bottom">
+            <%= link_to user_path(post.user) do %>
+              <h3><%= post.user.name %></h3>
+              <p> <%= post.location.country %> </p>
+              <p><%= post.body %></p>
+            <% end %>
+          </div>
+        </li>
+    <% end %>
+  </ul>
+<% end %>

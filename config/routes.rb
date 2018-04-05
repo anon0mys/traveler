@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:index, :show]
-  resources :locations, only: [:index]
+  resources :locations, only: [:index, :show]
 
   namespace :admin do
     resources :users, except: [:show]
