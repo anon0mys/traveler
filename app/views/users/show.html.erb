@@ -1,22 +1,37 @@
-<% if @user_home %>
-  <h2>Welcome, <%= @user.name %></h2>
-<% else %>
-  <h2>The adventures of <%= @user.name %></h2>
-<% end %>
+<div class="page-title">
+  <% if @user_home %>
+    <h2>Welcome, <%= @user.name %></h2>
+  <% else %>
+    <h2>The adventures of <%= @user.name %></h2>
+  <% end %>
+</div>
 
 <% unless @posts.nil? %>
   <ul class='cards-container'>
     <% @posts.each do |post| %>
         <li class='card'>
-          <%= link_to post.title, post_path(post), class: 'post-title' %>
-          <p> <%= post.location.state %>, <%= post.location.country %> </p>
-          <p><%= post.body %></p>
-          <% if @user_home %>
-            <div class="buttons">
-              <%= link_to 'Edit', edit_user_post_path(@user) %>
-              <%= button_to 'Delete', user_post_path(@user, post), method: 'delete' %>
-            </div>
-          <% end %>
+          <div class="card-image-container">
+            <%= link_to post_path(post) do %>
+              <div class="card-image">
+                <%= image_tag asset_path 'old.jpeg' %>
+              </div>
+              <div class="post-title">
+                <%= post.title %>
+              </div>
+            <% end %>
+          </div>
+          <div class="card-bottom">
+            <%= link_to user_path(post.user) do %>
+              <h5> <%= post.location.state %>, <%= post.location.country %> </h5>
+              <p class="user-show-description"><%= post.body[0..120] %></p>
+              <% if @user_home %>
+                <div class="buttons">
+                  <%= link_to 'Edit', edit_user_post_path(@user), class: 'edit-button' %>
+                  <%= button_to 'Delete', user_post_path(@user, post), method: 'delete', class: 'delete-button' %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
         </li>
     <% end %>
   </ul>
