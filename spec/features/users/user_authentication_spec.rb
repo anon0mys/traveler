@@ -27,7 +27,7 @@ describe 'Authentication' do
 
     fill_in 'email', with: user.email
     fill_in 'password', with: user.password
-    within '.login-form' do
+    within '.buttons' do
       click_on 'Log In'
     end
 
@@ -43,7 +43,7 @@ describe 'Authentication' do
 
     fill_in 'email', with: user.email
     fill_in 'password', with: user.password
-    within '.login-form' do
+    within '.buttons' do
       click_on 'Log In'
     end
 

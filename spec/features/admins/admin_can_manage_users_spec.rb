@@ -20,7 +20,7 @@ describe 'Admin' do
 
     expect(page).to_not have_content('Admin Users Console')
     expect(page).to have_content(@users.first.name)
-    expect(page).to have_content(@users.last.email)
+    expect(page).to have_content(@users.last.name)
   end
 
   scenario 'can create a new default user' do

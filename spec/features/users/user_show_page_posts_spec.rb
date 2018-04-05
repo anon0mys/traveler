@@ -8,12 +8,14 @@ describe 'User' do
 
     visit user_path(user)
 
-    click_on 'Add an Adventure'
+    within '.dropdown-menu' do
+      click_on 'Add an Adventure'
+    end
 
     expect(current_path).to eq(new_user_post_path(user))
 
     fill_in 'post[title]', with: 'Adventure 1'
-    select 'USA', from: 'post[location][country]'
+    select 'United States', from: 'post[location][country]'
     fill_in 'post[location][lat]', with: 39.742043
     fill_in 'post[location][lng]', with: -104.991531
     fill_in 'post[body]', with: 'A description of the adventure.'
