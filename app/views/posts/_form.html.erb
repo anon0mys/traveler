@@ -10,11 +10,11 @@
     </div>
     <div class="form-group">
       <%= l.label :latitude %>
-      <%= l.number_field :lat, nil, min: '-90', max: '90', step: 'any', class: 'form-control' %>
+      <%= l.number_field :lat, { in: -90..90, step: :any, class: 'form-control' } %>
     </div>
     <div class="form-group">
       <%= l.label :longitude %>
-      <%= l.number_field :lng, nil, min: '-180', max: '180', step: 'any', class: 'form-control' %>
+      <%= l.number_field :lng, { in: -180..180, step: :any, class: 'form-control' } %>
     </div>
   <% end %>
   <div class="form-group">
