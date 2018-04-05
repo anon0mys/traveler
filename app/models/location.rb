@@ -12,6 +12,6 @@ class Location < ApplicationRecord
   end
 
   def self.maps_loc_prep
-    all.as_json(only: [:lat, :lng])
+    all.to_json(only: [:lat, :lng])
   end
 end
