@@ -4,6 +4,12 @@
   justify-content: space-around
   margin-right: 10px
 
+  a
+    color: white
+    font-family: 'Cinzel', serif
+    font-weight: bold
+    text-decoration: none
+
   .card
     flex: 1
     min-width: 300px
@@ -18,19 +24,18 @@
 
   .card:hover
     transform: scale(1.05)
+    transition-duration: 0.25s
 
-    .card-image-container
+    .card-image-container:hover
+      transition-duration: 0.25s
       height: 100%
-
-    .card-bottom
-      position: absolute
-      z-index: -1
+      z-index: 2
 
   .card-image-container
     position: relative
     height: 150px
     overflow: hidden
-    z-index: 2
+    z-index: 1
 
     .card-image
       position: absolute
@@ -50,8 +55,12 @@
       font-size: 3em
       margin-top: 20px
 
-      a
-        color: white
-        font-family: 'Cinzel', serif
-        font-weight: bold
-        text-decoration: none
+  .card-bottom
+    position: absolute
+    top: 55%
+    left: 33%
+    z-index: 1
+
+    a
+      color: black
+      font-weight: normal
