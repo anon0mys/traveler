@@ -20,7 +20,7 @@
             <%= link_to user_path(post.user) do %>
               <h3><%= post.user.name %></h3>
               <p> <%= post.location.country %> </p>
-              <p><%= post.body %></p>
+              <p class="user-show-description"><%= post.body[0..100] %></p>
             <% end %>
           </div>
         </li>
