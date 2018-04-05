@@ -1,10 +1,49 @@
+.button_to
+  margin: 0
+  margin-left: 15px
+
 .page-title
   margin-top: 15px
   margin-bottom: 15px
   font-family: 'Cinzel', serif
   text-align: center
+  align-items: center
   border-bottom: 0.25px solid black
   box-shadow: 0.25px 1px 1px black
+
+  .show-links
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+
+    .user-links
+      width: 10%
+      text-decoration: none
+main
+  width: 60%
+  margin-left: 25%
+
+  .post-info
+    display: flex
+    flex-direction: row
+    align-items: baseline
+    justify-content: space-around
+    max-height: 70px
+    border-bottom: 1px solid black
+
+    .post-show-buttons
+      margin-top: 10px
+      width: 40%
+      text-align: center
+
+  .post-body
+    margin-top: 15px
+
+form
+  width: 50%
+  margin-left: 25%
+  height: 600px
+  margin-top: 30px
 
 .buttons
   display: flex
@@ -12,33 +51,42 @@
   justify-content: center
   align-items: baseline
 
-  .delete-button
-    padding: 13px
-    padding-top: 1.5px
-    padding-bottom: 1.5px
-    background-color: #ececec
-    border: 1px solid grey
-    font-family: 'Cinzel', serif
-    font-weight: normal
+  .cancel
+    width: 20%
+    text-align: center
+    margin: 40px
+    margin-top: 5px
+    margin-bottom: 5px
     text-decoration: none
 
-  .delete-button:hover
-    background-color: #d60000
-    border: none
+  .cancel:hover
     transform: scale(1.0125)
+    border-color: #ffa332
 
-  .edit-button
-    padding: 17px
-    padding-top: 1.5px
-    padding-bottom: 1.5px
-    border: 1px solid grey
-    margin-right: 20px
-    background-color: #ececec
+  .submit
+    width: 30%
+    text-align: center
+    margin: 40px
+    margin-top: 5px
+    margin-bottom: 5px
 
-  .edit-button:hover
-    background-color: #ffd23f
-    border: none
+  .submit:hover
     transform: scale(1.0125)
+    border-color: #059128
+
+  .delete
+    width: 80%
+
+  .delete:hover
+    transform: scale(1.0125)
+    border-color: #d60000
+
+  .edit
+    width: 30%
+
+  .edit:hover
+    transform: scale(1.0125)
+    border-color: #ffa332
 
 #regions_div
   width: 60%

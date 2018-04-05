@@ -1,8 +1,22 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.user.name %></p>
-<p><%= @post.location.country %></p>
+<div class="page-title">
+  <h2><%= @post.title %></h2>
+</div>
 
-<%= link_to 'Edit', edit_user_post_path(@post.user, @post) %>
-<%= button_to 'Delete', user_post_path(@post.user, @post), method: 'delete' %>
+<main>
+  <div class="post-info">
+    <h3><%= @post.user.name %></h3>
+    <p><%= @post.location.country %></p>
+    <div class="post-show-buttons">
+      <% if current_user == @post.user %>
+        <div class="buttons">
+          <%= link_to 'Edit', edit_user_post_path(@post.user, @post), class: 'form-control edit card-button' %>
+          <%= button_to 'Delete', user_post_path(@post.user, @post), method: 'delete', class: 'form-control delete card-button'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<p><%= @post.body %></p>
+  <div class="post-body">
+    <p><%= @post.body %></p>
+  </div>
+</main>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Traveller</title>
+    <title>A World Wanderer</title>
     <%= csrf_meta_tags %>
 
     <!-- Bootstrap Setup -->
@@ -15,16 +15,12 @@
   </head>
 
   <body>
+    <%= render partial: 'layouts/nav' %>
     <header>
       <div class="hero-image">
         <%= image_tag asset_path 'header.jpeg' %>
       </div>
-      <%= render partial: 'layouts/profile' %>
-      <div class="hero-title">
-        <a href="/">A World Wanderer</a>
-      </div>
     </header>
-    <%= render partial: 'layouts/nav' %>
     <%= yield %>
   </body>
 </html>

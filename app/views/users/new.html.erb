@@ -1,9 +1,5 @@
-<% if flash[:error] %>
-  <%= flash.alert %>
-<% end %>
+<div class="page-title">
+  <h2>Create an Account</h2>
+</div>
 
-<h2>Create an Account</h2>
-
-<main>
-  <%= render partial: 'form' %>
-</main>
+<%= render partial: 'form' %>

@@ -1,16 +1,24 @@
 
 <%= form_for [:admin, @user] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :role %>
-  <%= f.select :role, ['default', 'admin']  %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'First Last' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email%>
+    <%= f.email_field :email, class: 'form-control', id: "exampleFormControlInput1", placeholder: 'name@example.com' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control', placeholder: '******' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :role %>
+    <%= f.select :role, ['default', 'admin'], {}, { class: 'form-control', id: "exampleFormControlSelect1" } %>
+  </div>
 
-  <div class="cancel-submit">
-    <%= link_to 'Cancel', root_path %>
-    <%= f.submit %>
+  <div class="buttons">
+    <%= link_to 'Cancel', root_path, class: 'form-control cancel' %>
+    <%= f.submit class: 'form-control submit' %>
   </div>
 <% end %>
