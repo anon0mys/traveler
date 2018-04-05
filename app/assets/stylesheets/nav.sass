@@ -1,6 +1,7 @@
 .navbar
-  background-color: lightslategrey
-  box-shadow: 1px 1px 2px lightslategrey
+  position: absolute
+  z-index: 3
+  background-color: none
 
   .navbar-nav
     margin: 0
@@ -14,9 +15,28 @@
 
       a
         text-align: center
-        border-right: solid 0.5px black
 
     li:last-child
       a
         border-right: 0
         border-radius: 0 3px 3px 0
+
+    .dropdown-menu
+      background-color: transparent
+
+      .dropdown-item
+        color: white
+
+      .dropdown-item:hover
+        background-color: transparent
+        border: solid 1px white
+
+    .hero-logo
+      text-align: center
+      width: -1px
+
+      a
+        font-size: 2.25em
+        font-family: 'Cinzel', serif
+        color: white
+        text-decoration: none
