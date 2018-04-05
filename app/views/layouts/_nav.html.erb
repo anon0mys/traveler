@@ -22,6 +22,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if current_user %>
+          <%= link_to 'My Profile', user_path(current_user), class: 'dropdown-item' %>
           <%= link_to 'Add an Adventure', new_user_post_path(current_user), class: 'dropdown-item'%>
           <%= link_to 'Log Out', logout_path, class: 'dropdown-item' %>
           <% else %>

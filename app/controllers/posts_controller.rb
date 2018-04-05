@@ -29,6 +29,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     render file: '/public/404' unless @post.user.id == @user.id
     @location = @post.location
+    @countries = Post.all_countries
   end
 
   def update

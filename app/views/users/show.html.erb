@@ -4,7 +4,12 @@
   <% else %>
     <h2>The adventures of <%= @user.name %></h2>
   <% end %>
-  <%= link_to 'Add an Adventure', new_user_post_path(current_user), class: 'create-post-button'%>
+  <div class="show-links">
+    <% if @user.admin? %>
+      <%= link_to 'Admin Dashboard', admin_users_path, class: 'user-links'%>
+    <% end %>
+    <%= link_to 'Add an Adventure', new_user_post_path(current_user), class: 'user-links' %>
+  </div>
 </div>
 
 <% unless @posts.nil? %>
@@ -27,8 +32,8 @@
               <p class="user-show-description"><%= post.body[0..120] %></p>
               <% if @user_home %>
                 <div class="buttons">
-                  <%= link_to 'Edit', edit_user_post_path(@user), class: 'edit-button' %>
-                  <%= button_to 'Delete', user_post_path(@user, post), method: 'delete', class: 'delete-button' %>
+                  <%= link_to 'Edit', edit_user_post_path(@user), class: 'form-control edit card-button' %>
+                  <%= button_to 'Delete', user_post_path(@user, post), method: 'delete', class: 'form-control delete card-button' %>
                 </div>
               <% end %>
             <% end %>
