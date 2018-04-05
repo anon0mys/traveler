@@ -1,20 +1,33 @@
 <%= form_for [@user, @post], html: { multipart: true } do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', placeholder: 'Name Your Post' %>
+  </div>
   <%= f.fields_for @location do |l| %>
-    <%= l.label :country %>
-    <%= l.select :country, ['USA']  %>
-    <%= l.label :latitude %>
-    <%= l.number_field :lat %>
-    <%= l.label :longitude %>
-    <%= l.number_field :lng %>
+    <div class="form-group">
+      <%= l.label :country %>
+      <%= l.select :country, @countries.flatten, {}, { class: 'form-control' } %>
+    </div>
+    <div class="form-group">
+      <%= l.label :latitude %>
+      <%= l.number_field :lat, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= l.label :longitude %>
+      <%= l.number_field :lng, class: 'form-control' %>
+    </div>
   <% end %>
-  <%= f.label :body %>
-  <%= f.text_area :body %>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control', placeholder: 'Describe your adventure' %>
+  </div>
 
-  <% if @post.id.nil? %>
-    <%= f.submit 'Create Adventure' %>
-  <% else %>
-    <%= f.submit 'Update Adventure' %>
-  <% end %>
+  <div class="buttons">
+    <%= link_to 'Cancel', user_path(@user), class: 'form-control cancel' %>
+    <% if @post.id.nil? %>
+      <%= f.submit 'Create Adventure', class: 'form-control submit' %>
+    <% else %>
+      <%= f.submit 'Update Adventure', class: 'form-control submit' %>
+    <% end %>
+  </div>
 <% end %>

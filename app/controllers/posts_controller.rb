@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = @user.posts.new
     @location = Location.new
+    @countries = Post.all_countries
   end
 
   def create

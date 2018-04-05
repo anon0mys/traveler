@@ -4,6 +4,7 @@
   <% else %>
     <h2>The adventures of <%= @user.name %></h2>
   <% end %>
+  <%= link_to 'Add an Adventure', new_user_post_path(current_user), class: 'create-post-button'%>
 </div>
 
 <% unless @posts.nil? %>
