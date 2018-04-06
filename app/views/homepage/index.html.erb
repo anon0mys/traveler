@@ -1,26 +1,48 @@
-<div class="page-title">
-  <h2>A World Wanderer</h2>
-</div>
-<div id="regions_div"></div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A World Wanderer</title>
+    <%= csrf_meta_tags %>
 
-<%= javascript_tag "chartData = #{@chart_data.to_json.html_safe};" %>
+    <!-- Bootstrap Setup -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-<!-- Google Charts Sripts -->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-  google.charts.load('current', {
-    'packages':['geochart'],
-    'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-  });
-  google.charts.setOnLoadCallback(drawRegionsMap);
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
 
-  function drawRegionsMap() {
-    var data = google.visualization.arrayToDataTable(chartData);
+  <body class="home-page">
+    <div class="index-header">
+      <%= render partial: '/layouts/nav' %>
+    </div>
+    <div class="chart-container">
+      <div id="regions_div"></div>
+    </div>
 
-    var options = {colorAxis: {colors: ['#e1ecf2', '#005e2c']}};
+    <%= javascript_tag "chartData = #{@chart_data.to_json.html_safe};" %>
 
-    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+    <!-- Google Charts Sripts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
 
-    chart.draw(data, options);
-  }
-</script>
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable(chartData);
+
+        var options = {colorAxis: {colors: ['#e1ecf2', '#005e2c']},
+                       backgroundColor: { fill:'transparent' }};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </body>
+</html>
