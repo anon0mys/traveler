@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   def top_three_locations
     locations.joins(:country)
-             .group(:country_id)
+             .group('countries.name')
              .order('count_country_id DESC')
              .count(:country_id)
              .first(3)
