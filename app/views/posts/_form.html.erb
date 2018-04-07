@@ -6,7 +6,7 @@
   <%= f.fields_for @location do |l| %>
     <div class="form-group">
       <%= l.label :country %>
-      <%= l.select :country, @countries.flatten, {}, { class: 'form-control' } %>
+      <%= l.select :country, @countries.map { |c| c.name }, {}, { class: 'form-control' } %>
     </div>
     <div class="form-group">
       <%= l.label :latitude %>

@@ -59,6 +59,7 @@ class PostsController < ApplicationController
   def build_params
     all_params = post_params
     loc_data = all_params[:location]
+    loc_data[:country] = Country.find_by_name(loc_data[:country])
     all_params[:location] = Location.find_by_lat_and_lng(loc_data[:lat], loc_data[:lng])
     unless all_params[:location]
       all_params[:location] = Location.create(loc_data)
