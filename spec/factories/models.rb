@@ -3,11 +3,11 @@ FactoryBot.define do
     code "US"
     lat { rand(-90..90) }
     lng { rand(-180..180) }
-    sequence(:country, 1) { |n| "Country #{n}" }
+    sequence(:name, 1) { |n| "Country #{n}" }
   end
 
   factory :location do
-    assiciation :country
+    association :country
     lat { rand(-90..90) }
     lng { rand(-180..180) }
   end

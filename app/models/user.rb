@@ -9,9 +9,10 @@ class User < ApplicationRecord
   enum role: %i[default admin]
 
   def top_three_locations
-    locations.group(:country)
+    locations.joins(:countries)
+             .group(:country_id)
              .order('count_country DESC')
-             .count(:country)
+             .count(:country_id)
              .first(3)
              .to_h
   end

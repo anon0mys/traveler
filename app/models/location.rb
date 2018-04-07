@@ -6,7 +6,7 @@ class Location < ApplicationRecord
   def self.sum_of_countries
     select('locations.*')
       .joins(:posts)
-      .group(:country)
+      .group(:country_id)
       .order('count_location_id DESC')
       .count(:location_id)
       .to_a
