@@ -1,6 +1,13 @@
 FactoryBot.define do
-  factory :location do
+  factory :country do
+    code "US"
+    lat { rand(-90..90) }
+    lng { rand(-180..180) }
     sequence(:country, 1) { |n| "Country #{n}" }
+  end
+
+  factory :location do
+    assiciation :country
     lat { rand(-90..90) }
     lng { rand(-180..180) }
   end

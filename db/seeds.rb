@@ -1,15 +1,20 @@
+require 'csv'
+data = CSV.open('./db/all_countries.csv', headers: true, header_converters: :symbol)
+data.map do |row|
+  Country.create(name: row[:name], code: row[:country], lat: row[:latitude], lng: row[:longitude])
+end
 
 user_one = User.create(name: 'User 1', email: 'user1@mail.com', password: 'password')
 user_two = User.create(name: 'User 2', email: 'user2@mail.com', password: 'password')
 User.create(name: 'Admin', email: 'admin@mail.com', password: 'password', role: 1)
 
-location_one = Location.create(country: 'USA', lat: 39.742043, lng: -104.991531)
-location_two = Location.create(country: 'USA', lat: 37.09024, lng: -95.712891)
-location_three = Location.create(country: 'USA', lat: 39.742043, lng: -104.991531)
-location_four = Location.create(country: 'Italy', lat: 41.87194, lng: 12.56738)
-location_five = Location.create(country: 'France', lat: 46.227638, lng: 2.213749)
-location_six = Location.create(country: 'United Kingdom', lat: 55.378051, lng: -3.435973)
-location_seven = Location.create(country: 'South Africa', lat: -30.559482, lng: 22.937506)
+location_one = Location.create(country: Country.find_by(code: 'US'), lat: 39.742043, lng: -104.991531)
+location_two = Location.create(country: Country.find_by(code: 'US'), lat: 37.09024, lng: -95.712891)
+location_three = Location.create(country: Country.find_by(code: 'US'), lat: 39.742043, lng: -104.991531)
+location_four = Location.create(country: Country.find_by(code: 'US'), lat: 41.87194, lng: 12.56738)
+location_five = Location.create(country: Country.find_by(code: 'US'), lat: 46.227638, lng: 2.213749)
+location_six = Location.create(country: Country.find_by(code: 'US'), lat: 55.378051, lng: -3.435973)
+location_seven = Location.create(country: Country.find_by(code: 'US'), lat: -30.559482, lng: 22.937506)
 
 # User one posts
 (1..6).each do |num|

@@ -16,8 +16,21 @@
       });
     });
 
+    attachSecretMessage(marker, secretMessages[i]);
+
     var markerCluster = new MarkerClusterer(map, markers,
         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  }
+
+
+  function attachSecretMessage(marker, secretMessage) {
+    var infowindow = new google.maps.InfoWindow({
+      content: secretMessage
+    });
+
+    marker.addListener('click', function() {
+      infowindow.open(marker.get('map'), marker);
+    });
   }
 
   var locations = <%= @locations.as_json.html_safe %>;

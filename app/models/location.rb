@@ -1,4 +1,5 @@
 class Location < ApplicationRecord
+  belongs_to :country
   has_many :posts
   has_many :users, through: :posts
 
