@@ -10,11 +10,11 @@ User.create(name: 'Admin', email: 'admin@mail.com', password: 'password', role: 
 
 location_one = Location.create(country: Country.find_by(code: 'US'), lat: 39.742043, lng: -104.991531)
 location_two = Location.create(country: Country.find_by(code: 'US'), lat: 37.09024, lng: -95.712891)
-location_three = Location.create(country: Country.find_by(code: 'US'), lat: 39.742043, lng: -104.991531)
-location_four = Location.create(country: Country.find_by(code: 'US'), lat: 41.87194, lng: 12.56738)
-location_five = Location.create(country: Country.find_by(code: 'US'), lat: 46.227638, lng: 2.213749)
-location_six = Location.create(country: Country.find_by(code: 'US'), lat: 55.378051, lng: -3.435973)
-location_seven = Location.create(country: Country.find_by(code: 'US'), lat: -30.559482, lng: 22.937506)
+location_three = Location.create(country: Country.find_by(code: 'US'), lat: 39.742043, lng: -104.994531)
+location_four = Location.create(country: Country.find_by(code: 'FR'), lat: 46.227638, lng: 2.213749)
+location_five = Location.create(country: Country.find_by(code: 'GB'), lat: 55.378051, lng: -3.435973)
+location_six = Location.create(country: Country.find_by(code: 'CH'), lat: 35.86166, lng: 104.195397)
+location_seven = Location.create(country: Country.find_by(code: 'ZA'), lat: -30.559482, lng: 22.937506)
 
 # User one posts
 (1..6).each do |num|
