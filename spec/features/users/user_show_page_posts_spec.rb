@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'User' do
   scenario 'can create a post' do
     user = create(:user)
+    create(:country, name: 'United States')
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

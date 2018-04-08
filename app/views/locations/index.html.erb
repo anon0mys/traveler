@@ -2,12 +2,16 @@
 
 <script>
   function initMap() {
-    var center = {lat: <%= @lat %>, lng: <%= @lng %>};
+    var center = <%= @center.to_json.html_safe %>;
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 5,
       center: center
     });
     var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    var infowindow = new google.maps.InfoWindow({
+          content: 'Test'
+        });
 
     var markers = locations.map(function(location, i) {
       return new google.maps.Marker({
@@ -18,6 +22,7 @@
 
     var markerCluster = new MarkerClusterer(map, markers,
         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
   }
 
   var locations = <%= @locations.as_json.html_safe %>;
