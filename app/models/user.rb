@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :locations, through: :posts
   has_secure_password
+  mount_uploader :avatar, AvatarUploader
 
   enum role: %i[default admin]
 
