@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, location: [:country, :lat, :lng])
+    params.require(:post).permit(:title, :body, {avatars: []}, location: [:country, :lat, :lng])
   end
 
   def build_params

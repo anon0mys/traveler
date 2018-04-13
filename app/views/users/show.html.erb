@@ -30,7 +30,7 @@
           </div>
           <div class="card-bottom">
             <%= link_to user_path(post.user) do %>
-              <h5> <%= post.location.country %> </h5>
+              <h5> <%= post.location.country.name %> </h5>
               <p class="user-show-description"><%= post.body[0..120] %></p>
               <% if @user_home %>
                 <div class="buttons">
