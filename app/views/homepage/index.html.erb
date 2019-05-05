@@ -27,9 +27,10 @@
     <!-- Google Charts Sripts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+      let chart;
       google.charts.load('current', {
         'packages':['geochart'],
-        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+        'mapsApiKey': 'api_key'
       });
       google.charts.setOnLoadCallback(drawRegionsMap);
 
@@ -40,9 +41,15 @@
                        legend: 'bottom',
                        backgroundColor: { fill:'transparent' }};
 
-        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+        chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
         chart.draw(data, options);
+
+        google.visualization.events.addListener(chart, 'regionClick', selectHandler);
+
+        function selectHandler(e) {
+          window.location.href = "/locations?country=" + e.region;
+        }
       }
     </script>
   </body>

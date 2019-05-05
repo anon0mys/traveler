@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = @user.posts.new
     @location = Location.new
-    @countries = Post.all_countries
+    @countries = Country.all
   end
 
   def create
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     render file: '/public/404' unless @post.user.id == @user.id
     @location = @post.location
-    @countries = Post.all_countries
+    @countries = Country.all
   end
 
   def update
@@ -53,12 +53,13 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, location: [:country, :lat, :lng])
+    params.require(:post).permit(:title, :body, {avatars: []}, location: [:country, :lat, :lng])
   end
 
   def build_params
     all_params = post_params
     loc_data = all_params[:location]
+    loc_data[:country] = Country.find_by_name(loc_data[:country])
     all_params[:location] = Location.find_by_lat_and_lng(loc_data[:lat], loc_data[:lng])
     unless all_params[:location]
       all_params[:location] = Location.create(loc_data)

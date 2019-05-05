@@ -6,7 +6,7 @@
   <%= f.fields_for @location do |l| %>
     <div class="form-group">
       <%= l.label :country %>
-      <%= l.select :country, @countries.flatten, {}, { class: 'form-control' } %>
+      <%= l.select :country, @countries.map { |c| c.name }, {}, { class: 'form-control' } %>
     </div>
     <div class="form-group">
       <%= l.label :latitude %>
@@ -17,6 +17,10 @@
       <%= l.number_field :lng, { in: -180..180, step: :any, class: 'form-control' } %>
     </div>
   <% end %>
+  <div class="form-group">
+    <%= f.label :images %>
+    <%= f.file_field :avatars, multiple: true, class: 'form-control' %>
+  </div>
   <div class="form-group">
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control', placeholder: 'Describe your adventure' %>
